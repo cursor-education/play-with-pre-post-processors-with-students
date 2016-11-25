@@ -1,0 +1,29 @@
+{
+  "name": "app",
+  "dependencies": {
+    "autoprefixer": "^6.5.3",
+    "del": "^2.2.2",
+    "del-cli": "^0.2.0",
+    "git-scripts": "^0.2.1",
+    "node-sass": "^3.13.0",
+    "onchange": "^3.0.2",
+    "postcss-cli": "^2.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "cleanup": "del dest/*",
+    "lint:html": "htmlhint src/",
+    "lint:css": "echo 2",
+    "lint": "npm run lint:html && npm run lint:css",
+    "build:html": "npm run lint:html && echo \"building pug -> html..\"",
+    "build:css": "npm run lint:css && node-sass src/styles/ -o dest/ --output-style expanded && npm run build:css:autoprefixer",
+    "build:css:autoprefixer": "postcss --use autoprefixer dest/*.css --replace",
+    "build": "npm run cleanup && npm run build:html && npm run build:css",
+    "watch": "onchange 'src/**/*.*' -- npm run build"
+  },
+  "git": {
+    "scripts": {
+      "pre-commit": "npm run lint"
+    }
+  }
+}
