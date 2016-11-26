@@ -20,7 +20,7 @@
     "lint:pug": "pug-lint src/views",
     "lint:css": "echo 2",
     "lint": "npm run lint:pug && npm run lint:css",
-    "build:html": "npm run lint:pug && pug --out dest/ --pretty src/views",
+    "build:html": "npm run lint:pug && pug --out dest/ --pretty src/views/pages",
     "build:css": "npm run lint:css && node-sass src/styles/ -o dest/ --output-style expanded && npm run build:css:autoprefixer",
     "build:css:autoprefixer": "postcss --use autoprefixer dest/*.css --replace",
     "build": "npm run cleanup && npm run build:html && npm run build:css",
