@@ -1,0 +1,19 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-color: #bada55;
+}
+
+body div {
+  display: block;
+  background: red;
+}
+
+body div:hover {
+  background: blue;
+}
+
+body div:active {
+  background: green;
+}
