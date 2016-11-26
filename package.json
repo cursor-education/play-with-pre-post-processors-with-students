@@ -9,7 +9,9 @@
     "htmlhint": "^0.9.13",
     "node-sass": "^3.13.0",
     "onchange": "^3.0.2",
-    "postcss-cli": "^2.6.0"
+    "postcss-cli": "^2.6.0",
+    "pug": "^2.0.0-beta6",
+    "pug-cli": "^1.0.0-alpha6"
   },
   "scripts": {
     "test": "npm run lint",
@@ -17,7 +19,7 @@
     "lint:html": "htmlhint src/",
     "lint:css": "echo 2",
     "lint": "npm run lint:html && npm run lint:css",
-    "build:html": "npm run lint:html && echo \"building pug -> html..\"",
+    "build:html": "npm run lint:html && pug --out dest/ --pretty src/views",
     "build:css": "npm run lint:css && node-sass src/styles/ -o dest/ --output-style expanded && npm run build:css:autoprefixer",
     "build:css:autoprefixer": "postcss --use autoprefixer dest/*.css --replace",
     "build": "npm run cleanup && npm run build:html && npm run build:css",
