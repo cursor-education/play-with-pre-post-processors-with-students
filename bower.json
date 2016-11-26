@@ -1,7 +1,8 @@
 {
   "name": "app",
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "bootstrap-material-design": "^4.0.2"
+    "bootstrap": "3.3.4",
+    "bootstrap-material-design": "^4.0.2",
+    "normalize-css": "^5.0.0"
   }
 }

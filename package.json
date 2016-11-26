@@ -15,7 +15,9 @@
     "postcss-cli": "^2.6.0",
     "pug": "^2.0.0-beta6",
     "pug-cli": "^1.0.0-alpha6",
-    "pug-lint": "^2.3.0"
+    "pug-lint": "^2.3.0",
+    "wiredep": "^4.0.0",
+    "wiredep-cli": "^0.1.0"
   },
   "scripts": {
     "postinstall": "bower install",
@@ -24,11 +26,12 @@
     "lint:pug": "pug-lint src/views",
     "lint:css": "echo 2",
     "lint": "npm run lint:pug && npm run lint:css",
-    "build:html": "npm run lint:pug && pug --out dest/ --pretty src/views/pages",
+    "build:html": "npm run lint:pug && pug --out dest/ --pretty src/views/pages && npm run build:html:inject-vendors",
+    "build:html:inject-vendors": "wiredep -s dest/*.html",
     "build:css": "npm run lint:css && node-sass src/styles/ -o dest/ --output-style expanded && npm run build:css:autoprefixer",
     "build:css:autoprefixer": "postcss --use autoprefixer dest/*.css --replace",
     "build": "npm run cleanup && npm run build:html && npm run build:css",
-    "watch": "npm run build && onchange 'src/**/*.*' -- npm run build",
+    "watch": "npm run build && onchange 'src/**/*.*' '**/*.json' -- npm run build",
     "open": "opn http://localhost:8080/",
     "serve": "npm run build && http-server ./",
     "deploy": "npm run build && gh-pages --dist dest/"
