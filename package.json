@@ -2,6 +2,7 @@
   "name": "app",
   "dependencies": {
     "autoprefixer": "^6.5.3",
+    "bower": "^1.8.0",
     "del": "^2.2.2",
     "del-cli": "^0.2.0",
     "gh-pages": "^0.12.0",
@@ -26,9 +27,10 @@
     "build:css": "npm run lint:css && node-sass src/styles/ -o dest/ --output-style expanded && npm run build:css:autoprefixer",
     "build:css:autoprefixer": "postcss --use autoprefixer dest/*.css --replace",
     "build": "npm run cleanup && npm run build:html && npm run build:css",
-    "watch": "onchange 'src/**/*.*' -- npm run build",
+    "watch": "npm run build && onchange 'src/**/*.*' -- npm run build",
     "open": "opn http://localhost:8080/",
-    "serve": "http-server dest/"
+    "serve": "npm run build && http-server dest/",
+    "deploy": "npm run build && gh-pages --dist dest/"
   },
   "git": {
     "scripts": {
