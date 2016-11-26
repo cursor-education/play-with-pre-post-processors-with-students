@@ -1,0 +1,4 @@
+{
+  "disallowClassAttributeWithStaticValue": true,
+  "disallowClassLiteralsBeforeAttributes": true
+}
